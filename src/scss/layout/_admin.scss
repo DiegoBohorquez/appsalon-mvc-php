@@ -1,0 +1,51 @@
+@use '../base/variables' as v;
+
+.citas {
+
+    list-style: none;
+    padding: 0;
+
+    li {
+        padding: 2rem 1rem;
+        border-top: 1px solid v.$blanco;
+    }
+
+    p {
+        font-weight: v.$bold;
+        color: v.$azul;
+    }
+
+    span,
+    .servicio {
+        font-weight: v.$regular;
+        color: v.$blanco;
+    }
+}
+
+.datos-servicio,
+.funciones {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.6s ease-in-out;
+}
+
+.funciones {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    a,
+    input {
+        width: 100%;
+        border-radius: 1rem;
+        margin: 0;
+        padding: 1rem 0;
+    }
+}
+
+.mostrar-servicio {
+    max-height: 40rem;
+    opacity: 1;
+}
