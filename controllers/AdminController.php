@@ -24,10 +24,10 @@ class AdminController
         $consulta .= " FROM citas  ";
         $consulta .= " INNER JOIN usuarios ";
         $consulta .= " ON citas.usuario_id = usuarios.id  ";
-        $consulta .= " INNER JOIN citasServicios ";
-        $consulta .= " ON citasServicios.cita_id=citas.id ";
+        $consulta .= " INNER JOIN citasservicios ";
+        $consulta .= " ON citasservicios.cita_id=citas.id ";
         $consulta .= " INNER JOIN servicios ";
-        $consulta .= " ON servicios.id=citasServicios.servicio_id ";
+        $consulta .= " ON servicios.id=citasservicios.servicio_id ";
         $consulta .= " WHERE fecha =  '{$fecha}' ";
         $consulta .= " ORDER BY citas.id ASC ";
 
