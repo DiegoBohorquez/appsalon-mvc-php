@@ -9,11 +9,24 @@
 
 .campo {
     display: flex;
-    margin-bottom: 2rem;
+    flex-direction: column;
+    margin-bottom: 5rem;
     align-items: center;
 
+    @include m.telefono {
+        margin-bottom: 2rem;
+        flex-direction: row;
+        align-items: center;
+    }
+
     label {
-        flex: 0 0 10rem;
+        margin-bottom: 3rem;
+
+        @include m.telefono {
+            margin-bottom: 0;
+            flex: 0 0 10rem;
+        }
+
     }
 
     input {
@@ -21,6 +34,7 @@
         border: none;
         padding: calc(v.$separacion / 4);
         border-radius: 1rem;
+        min-width: 22rem;
 
         &:disabled {
             background-color: color.adjust(v.$negro, $lightness: 25%);

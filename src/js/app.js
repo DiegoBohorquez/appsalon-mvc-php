@@ -26,7 +26,6 @@ function iniciarApp() {
   nombreCliente(); // Añade el nombre del cliente al objeto cita
   seleccionarFecha(); // Añade la fecha al objeto cita
   seleccionarHora(); // Añade la hora al objeto cita
-  actualizarHoraMinima();
   mostrarResumen(); // Muestra el resumen de la cita
 }
 
@@ -191,32 +190,16 @@ function seleccionarHora() {
   const inputHora = document.querySelector("#hora");
 
   inputHora.addEventListener("input", function (e) {
-    const horaActual = new Date().getHours();
-    console.log(horaActual);
     const horaCita = e.target.value;
     const hora = horaCita.split(":")[0];
 
-    if (hora < horaActual) {
-      e.target.value = "";
-      mostrarAlerta("error", "Hora menor", "#paso-2 p");
-    } else if (hora < 9 || hora > 20) {
+    if (hora < 9 || hora > 20) {
       e.target.value = "";
       mostrarAlerta("error", "Hora no valida", "#paso-2 p");
     } else {
       cita.hora = e.target.value;
     }
   });
-}
-
-function actualizarHoraMinima() {
-  const inputHora = document.getElementById("hora");
-
-  // // Obtenemos hora y minutos actuales con formato 2 dígitos
-  // const horas = String(ahora.getHours());
-  // const minutos = String(ahora.getMinutes());
-
-  // // Establecemos la hora mínima en el input
-  // inputHora.min = `${horas}:${minutos}`;
 }
 
 function mostrarAlerta(tipo, mensaje, elemento, desaparece = true) {

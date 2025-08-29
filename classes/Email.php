@@ -30,9 +30,10 @@ class Email
         $mail->Port = $_ENV['EMAIL_PORT'];
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
+        $mail->SMTPSecure = 'tls';
 
-        $mail->setFrom('cuentas@appsalon.com');
-        $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
+        $mail->setFrom($_ENV['EMAIL_USER'], 'AppSalon.com');
+        $mail->addAddress($this->email);
         $mail->Subject = 'Confirma tu cuenta';
 
 
@@ -48,7 +49,10 @@ class Email
         $contenido .= "</html>";
 
         $mail->Body = $contenido;
-
+        if (!$mail->send()) {
+            debuguear($mail->ErrorInfo);
+            return;
+        }
         // Enviar el email
 
         $mail->send();
@@ -64,9 +68,10 @@ class Email
         $mail->Port = $_ENV['EMAIL_PORT'];
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
+        $mail->SMTPSecure = 'tls';
 
-        $mail->setFrom('cuentas@appsalon.com');
-        $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
+        $mail->setFrom($_ENV['EMAIL_USER'], 'AppSalon.com');
+        $mail->addAddress($this->email);
         $mail->Subject = 'Reestablece tu password';
 
 

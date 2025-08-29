@@ -12,6 +12,7 @@ class AdminController
     {
         session_start();
         isAdmin();
+        date_default_timezone_set('America/Bogota');
         $fecha = $_GET['fecha'] ?? date('Y-m-d');
         $fechas = explode('-', $fecha);
         if (!checkdate($fechas[1], $fechas[2], $fechas[0])) {
